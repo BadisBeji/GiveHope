@@ -1,23 +1,38 @@
 <?php
-class Database {
-    private static $pdo = null;
-
-    public static function connect() {
-        if (!isset(self::$pdo)) {
-            $host = 'localhost';
-            $dbname = 'givehope';
-            $user = 'root';
-            $pass = '';
-
-            try {
-                self::$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-                self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                return self::$pdo;
-            } catch (PDOException $e) {
-                die("❌ Erreur de connexion : " . $e->getMessage());
+if (!class_exists('config')) {
+    class config
+    {   
+        private static $pdo = null;
+        public static function getConnexion()
+        {
+            if (!isset(self::$pdo)) {
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "charity_db";
+                try {
+                    self::$pdo = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8",
+                        $username,
+                        $password,
+                        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+                    );
+                    self::$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+                } catch (PDOException $e) {
+                    die('Erreur de connexion : ' . $e->getMessage());
+                }
             }
+            return self::$pdo;
         }
-
-        return self::$pdo;
     }
 }
+config::getConnexion();
+?>
+
+
+
+
+
+
+
+
+
