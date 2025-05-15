@@ -1,0 +1,75 @@
+
+
+  /* Conteneur global qui contient filtres + produits */
+  .product-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligner en haut */
+    gap: 20px; /* Ajoute un espace entre les colonnes */
+  }
+  
+  /* Section des filtres */
+  .filters {
+    width: 25%;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content; /* Ajuste la hauteur en fonction du contenu */
+  }
+  
+  /* Options des filtres */
+  .filter-options label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Section des produits */
+  .products {
+    width: 70%;
+  }
+  
+  
+  .user-info-container {
+    width: 50%;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 50px !important;
+    margin: 0 auto; /* Centre horizontalement */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu à l'intérieur */
+    text-align: center; /* Centre le texte */
+  }
+  
+  
+  .user-info-container h2 { width: 100%;
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  
+  .form-group { width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .form-control {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding: 8px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+
+.btn {
+    margin-top: 10px;
+  }
+  input:disabled, 
+  textarea:disabled {
+    background-color: #e9ecef !important;  
+    color: #6c757d !important; 
+    cursor: not-allowed;
+  }
+  
