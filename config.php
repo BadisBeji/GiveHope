@@ -1,38 +1,24 @@
 <?php
-if (!class_exists('config')) {
-    class config
-    {   
-        private static $pdo = null;
-        public static function getConnexion()
-        {
-            if (!isset(self::$pdo)) {
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "charity_db";
-                try {
-                    self::$pdo = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8",
-                        $username,
-                        $password,
-                        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-                    );
-                    self::$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-                } catch (PDOException $e) {
-                    die('Erreur de connexion : ' . $e->getMessage());
-                }
-            }
-            return self::$pdo;
+class Database {
+    private $host = "localhost";
+    private $db_name = "givehope";
+    private $username = "root";
+    private $password = ""; // Change selon ton mot de passe
+    public $conn;
+
+    public function getConnection() {
+        $this->conn = null;
+
+        try {
+            $this->conn = new PDO("mysql:host={$this->host};dbname={$this->db_name}", 
+                                  $this->username, 
+                                  $this->password);
+            $this->conn->exec("set names utf8");
+        } catch(PDOException $exception) {
+            echo "Erreur de connexion : " . $exception->getMessage();
         }
+
+        return $this->conn;
     }
 }
-config::getConnexion();
 ?>
-
-
-
-
-
-
-
-
-
