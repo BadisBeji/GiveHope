@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>GiveHope&mdash; Supprimer un Article</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,500|Dosis:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Custom CSS -->
+  <style>
+    select.form-control {
+      position: relative;
+      z-index: 9999;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    select.form-control option {
+      background-color: #f0f0f0;
+      color: #333;
+      padding: 10px;
+    }
+
+    .error-message {
+      font-size: 0.875rem;
+      color: red;
+      display: none;
+    }
+
+    .article-list {
+      background-color: white;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .article-item {
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+
+    .article-item:last-child {
+      border-bottom: none;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .delete-btn:hover {
+      background-color: #c82333;
+    }
+
+    .modal-confirm {
+      color: #636363;
+    }
+
+    .modal-confirm .modal-content {
+      padding: 20px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .modal-confirm .modal-header {
+      border-bottom: none;
+      position: relative;
+    }
+
+    .modal-confirm h4 {
+      text-align: center;
+      font-size: 26px;
+      margin: 30px 0 -15px;
+    }
+
+    .modal-confirm .form-control, .modal-confirm .btn {
+      min-height: 40px;
+      border-radius: 3px; 
+    }
+
+    .modal-confirm .close {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+    }
+
+    .modal-confirm .modal-footer {
+      border: none;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 13px;
+    }
+
+    .modal-confirm .icon-box {
+      color: #fff;
+      position: absolute;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      top: -70px;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      z-index: 9;
+      background: #ef6c57;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-confirm .icon-box i {
+      font-size: 56px;
+      position: relative;
+      top: 4px;
+    }
+
+    .modal-confirm.modal-dialog {
+      margin-top: 80px;
+    }
+
+    .modal-confirm .btn {
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.4s;
+      line-height: normal;
+      border: none;
+    }
+
+    .modal-confirm .btn-danger {
+      background: #ef6c57;
+    }
+
+    .modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+      background: #da5942;
+    }
+
+    .trigger-btn {
+      display: inline-block;
+      margin: 100px auto;
+    }
+
+    .search-box {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Give4You</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="signup.html" class="nav-link">Signup</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="Association.html" class="nav-link">Association</a></li>
+          <li class="nav-item"><a href="donate.html" class="nav-link">Donation</a></li>
+          <li class="nav-item"><a href="Article.html" class="nav-link">Article</a></li>
+          <li class="nav-item"><a href="Event.html" class="nav-link">Event</a></li>
+          <li class="nav-item"><a href="magasin.html" class="nav-link">E-Shop</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <div class="block-31" style="position: relative;">
+    <div class="owl-carousel loop-block-31">
+      <div class="block-30 block-30-sm item" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-7">
+              <h2 class="heading mb-5">Supprimer un Article</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article List Section -->
+  <div class="site-section bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- Search Box -->
+          <div class="search-box">
+            <div class="form-group">
+              <input type="text" class="form-control py-2" id="searchArticle" placeholder="Rechercher un article par titre..." onkeyup="searchArticles()">
+            </div>
+          </div>
+
+          <!-- Article List -->
+          <div class="article-list">
+            <h3 class="mb-4">Liste des articles</h3>
+            
+            <div id="articleContainer">
+              <!-- Article items will be dynamically added here -->
+              <div class="article-item">
+                <div class="row">
+                  <div class="col-md-7">
+                    <h5>L'importance de l'éducation dans les zones défavorisées</h5>
+                    <p><strong>Catégorie:</strong> Éducation | <strong>Date:</strong> 2024-04-10 | <strong>Status:</strong> Publié</p>
+                    <p class="text-muted">Par: Jean Dupont</p>
+                  </div>
+                  <div class="col-md-5 text-right">
+                    <button class="btn btn-info mr-2" onclick="viewArticle(1)">Voir</button>
+                    <button class="btn btn-primary mr-2" onclick="editArticle(1)">Modifier</button>
+                    <button class="delete-btn" data-toggle="modal" data-target="#confirmDeleteModal" data-id="1" data-title="L'importance de l'éducation dans les zones défavorisées">Supprimer</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="article-item">
+                <div class="row">
+                  <div class="col-md-7">
+                    <h5>Comment réduire notre empreinte carbone au quotidien</h5>
+                    <p><strong>Catégorie:</strong> Environnement | <strong>Date:</strong> 2024-04-15 | <strong>Status:</strong> Publié</p>
+                    <p class="text-muted">Par: Marie Laurent</p>
+                  </div>
+                  <div class="col-md-5 text-right">
+                    <button class="btn btn-info mr-2" onclick="viewArticle(2)">Voir</button>
+                    <button class="btn btn-primary mr-2" onclick="editArticle(2)">Modifier</button>
+                    <button class="delete-btn" data-toggle="modal" data-target="#confirmDeleteModal" data-id="2" data-title="Comment réduire notre empreinte carbone au quotidien">Supprimer</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="article-item">
+                <div class="row">
+                  <div class="col-md-7">
+                    <h5>Accès aux soins médicaux dans les régions rurales</h5>
+                    <p><strong>Catégorie:</strong> Santé | <strong>Date:</strong> 2024-04-18 | <strong>Status:</strong> Brouillon</p>
+                    <p class="text-muted">Par: Paul Martin</p>
+                  </div>
+                  <div class="col-md-5 text-right">
+                    <button class="btn btn-info mr-2" onclick="viewArticle(3)">Voir</button>
+                    <button class="btn btn-primary mr-2" onclick="editArticle(3)">Modifier</button>
+                    <button class="delete-btn" data-toggle="modal" data-target="#confirmDeleteModal" data-id="3" data-title="Accès aux soins médicaux dans les régions rurales">Supprimer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="row mt-5">
+              <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                  <ul>
+                    <li><a href="#">&lt;</a></li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&gt;</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="confirmDeleteModal" class="modal fade modal-confirm">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="icon-box">
+            <i class="icon icon-trash"></i>
+          </div>
+          <h4 class="modal-title">Confirmation de suppression</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Êtes-vous sûr de vouloir supprimer cet article ?</p>
+          <p id="articleToDelete" class="font-weight-bold"></p>
+          <p>Cette action est irréversible.</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-danger" id="confirmDelete">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Section À propos de nous -->
+        <div class="col-md-4">
+          <h3 class="heading-section">À propos de nous</h3>
+          <p class="lead">
+            Chez Give4You, nous croyons en la puissance de la générosité pour changer des vies. Notre mission est de venir en aide aux personnes dans le besoin, de soutenir les communautés vulnérables et de promouvoir un monde plus solidaire. Chaque don, chaque geste de bienveillance compte. Rejoignez-nous dans cette noble cause et ensemble, faisons la différence.
+          </p>
+        </div>
+
+        <!-- Section Contact -->
+        <div class="col-md-4">
+          <h3 class="heading-section">Contactez-nous</h3>
+          <ul class="list-unstyled">
+            <li><span class="icon icon-envelope"></span> give4you@contact.com</li>
+            <li><span class="icon icon-phone"></span> (+216) 53 247 404</li>
+            <li><span class="icon icon-map-marker"></span> B.P. 160, pôle Technologique, Z.I. Chotrana II, 2083</li>
+          </ul>
+        </div>
+
+        <!-- Section Réseaux sociaux -->
+        <div class="col-md-4">
+          <h3 class="heading-section">Suivez-nous</h3>
+          <ul class="list-unstyled">
+            <li><a href="#"><span class="icon icon-facebook"></span> Facebook</a></li>
+            <li><a href="#"><span class="icon icon-twitter"></span> Twitter</a></li>
+            <li><a href="#"><span class="icon icon-instagram"></span> Instagram</a></li>
+            <li><a href="#"><span class="icon icon-linkedin"></span> LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="row pt-5">
+        <div class="col-md-12 text-center">
+          <p>
+            &copy; <script>document.write(new Date().getFullYear());</script> Give4You. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Function to search articles by title
+    function searchArticles() {
+      let input = document.getElementById('searchArticle');
+      let filter = input.value.toUpperCase();
+      let container = document.getElementById('articleContainer');
+      let articles = container.getElementsByClassName('article-item');
+      
+      for (let i = 0; i < articles.length; i++) {
+        let title = articles[i].getElementsByTagName('h5')[0];
+        let txtValue = title.textContent || title.innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          articles[i].style.display = "";
+        } else {
+          articles[i].style.display = "none";
+        }
+      }
+    }
+
+    // Function to handle modal content
+    $(document).ready(function() {
+      $('#confirmDeleteModal').on('show.bs.modal', function(e) {
+        let button = $(e.relatedTarget);
+        let id = button.data('id');
+        let title = button.data('title');
+        
+        $('#articleToDelete').text(title);
+        
+        $('#confirmDelete').on('click', function() {
+          deleteArticle(id);
+          $('#confirmDeleteModal').modal('hide');
+        });
+      });
+    });
+
+    // Function to delete an article
+    function deleteArticle(id) {
+      // Here you would normally make an AJAX call to your backend API
+      console.log('Deleting article with ID: ' + id);
+      
+      // For demonstration purposes, we'll just remove the element from the DOM
+      // In a real application, you would first send a request to your server
+      let articleElement = document.querySelector(`.delete-btn[data-id="${id}"]`).closest('.article-item');
+      
+      // Simulate a successful delete with a small delay
+      setTimeout(function() {
+        articleElement.style.opacity = '0';
+        setTimeout(function() {
+          articleElement.parentNode.removeChild(articleElement);
+          
+          // Show a success message
+          alert('Article supprimé avec succès!');
+        }, 500);
+      }, 500);
+    }
+
+    // Function to view an article (placeholder)
+    function viewArticle(id) {
+      // In a real application, this would navigate to the article view page
+      console.log('Viewing article with ID: ' + id);
+      alert('Redirection vers la page de l\'article ' + id);
+    }
+
+    // Function to edit an article (placeholder)
+    function editArticle(id) {
+      // In a real application, this would navigate to the article edit page
+      console.log('Editing article with ID: ' + id);
+      alert('Redirection vers la page de modification de l\'article ' + id);
+    }
+  </script>
+</body>
+</html>
