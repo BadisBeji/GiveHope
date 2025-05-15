@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - Give4You</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<script src="js/Login.js"></script>
+
+<body>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Connexion</h2>
+        <form method="POST" action="login.php">
+          <div class="form-group">
+            <label for="email">Adresse Email</label>
+            <input type="email" name="email" class="form-control" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LcdmzcrAAAAAGSkY7PtDl6gHmZ9RxFzVggnqeER"></div>
+
+          <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+        </form>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <div class="text-center mt-3">
+          <p>Pas encore inscrit ? <a href="signup.html">Créer un compte</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

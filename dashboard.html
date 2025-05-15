@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script defer src="js/dashboard.js"></script>
+</head>
+
+<body>
+  <div class="sidebar">
+    <h2>Dashboard Admin</h2>
+    <button onclick="navigateTo('home')">🏠 Home</button>
+    <button onclick="navigateTo('users')">👤 Liste des utilisateurs</button>
+    <button onclick="navigateTo('products')">🛒 Produits</button>
+    <button onclick="navigateTo('articles')">📰 Articles</button>
+    <button onclick="navigateTo('events')">📅 Events</button>
+    <button onclick="navigateTo('associations')">🏢 Associations</button>
+    <button onclick="navigateTo('donations')">💰 Donations</button>
+  </div>
+  <div class="content" id="content-area">
+    <h3>Bienvenue sur le Dashboard Admin</h3>
+    <p>Choisissez une section dans le menu à gauche.</p>
+  </div>
+</body>
+
+</html>
